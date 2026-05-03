@@ -3,20 +3,29 @@
      xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Ryan's Daily Vision</title>
+    <title>Project Baseline - Vision</title>
     <link>https://albrittxn.github.io/vision-audio</link>
     <language>en-us</language>
-    <description>Daily first-person vision narratives.</description>
+    <description>Daily first-person narratives from a constructed future.</description>
     <itunes:author>Ryan</itunes:author>
-    <itunes:summary>Daily first-person vision narratives.</itunes:summary>
+    <itunes:summary>Daily first-person narratives from a constructed future.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:category text="Education"/>
     <itunes:image href="https://albrittxn.github.io/vision-audio/cover.jpg"/>
-    <lastBuildDate>Sun, 03 May 2026 07:14:03 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2026 07:44:57 +0000</lastBuildDate>
+    <item>
+      <title>Vision — Vision 2 - 05.03</title>
+      <description>Vision — Vision 2 - 05.03</description>
+      <pubDate>Sun, 03 May 2026 07:35:50 +0000</pubDate>
+      <guid isPermaLink="false">https://albrittxn.github.io/vision-audio/audio/Vision%202%20-%2005.03.mp3</guid>
+      <enclosure url="https://albrittxn.github.io/vision-audio/audio/Vision%202%20-%2005.03.mp3" length="4594752" type="audio/mpeg"/>
+      <itunes:author>Ryan</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>Vision — Vision 1 - 05.03</title>
       <description>Vision — Vision 1 - 05.03</description>
-      <pubDate>Sun, 03 May 2026 07:14:03 +0000</pubDate>
+      <pubDate>Sun, 03 May 2026 07:16:06 +0000</pubDate>
       <guid isPermaLink="false">https://albrittxn.github.io/vision-audio/audio/Vision%201%20-%2005.03.mp3</guid>
       <enclosure url="https://albrittxn.github.io/vision-audio/audio/Vision%201%20-%2005.03.mp3" length="3153168" type="audio/mpeg"/>
       <itunes:author>Ryan</itunes:author>

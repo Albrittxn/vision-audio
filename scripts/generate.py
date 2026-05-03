@@ -558,12 +558,12 @@ def build_rss():
      xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Ryan's Daily Vision</title>
+    <title>Project Baseline - Vision</title>
     <link>{BASE_URL}</link>
     <language>en-us</language>
-    <description>Daily first-person vision narratives.</description>
+    <description>Daily first-person narratives from a constructed future.</description>
     <itunes:author>Ryan</itunes:author>
-    <itunes:summary>Daily first-person vision narratives.</itunes:summary>
+    <itunes:summary>Daily first-person narratives from a constructed future.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:category text="Education"/>
     <itunes:image href="{BASE_URL}/cover.jpg"/>
