@@ -411,7 +411,7 @@ def generate_narrative(vision_text, narrative_date, day_spec, spice):
     formatted_date = format_narrative_date(narrative_date)
 
     system_prompt = (
-        "You write 2500-word first-person POV narratives for Ryan, age 18, "
+        "You write first-person POV narratives for Ryan, age 18, "
         "founder of Entheios AI in Las Vegas. The narrative is set once his "
         "vision is fully achieved. Present tense throughout. Heavy sensory "
         "detail (smells, textures, light, sound). Internal monologue interleaved "
@@ -444,7 +444,20 @@ def generate_narrative(vision_text, narrative_date, day_spec, spice):
         "Less is more."
     )
 
-    user_message = vision_text
+    length_requirement = (
+        "LENGTH REQUIREMENT (hard):\n"
+        "- Minimum 2400 words. Output under 2400 words is invalid.\n"
+        "- Structure the narrative across 5-7 distinct scenes with location/time shifts.\n"
+        "- Each scene must contain at least 3 sensory details (smell, texture, sound, light, taste).\n"
+        "- On Vegas/home days: at least 2 micro-interactions with Karen and 2 with Jasmine "
+        "in person. On solo travel days (NYC/Adam, Philly/Uncle Matt, San Diego/Maxwell, etc.), "
+        "this rule is suspended — narrative may include 0-1 calls/texts/photos as natural, but "
+        "should not force remote contact to satisfy a count.\n"
+        "- Do not rush to closing. The \"I know I'm the man now\" beat lands at the end of a "
+        "fully-developed day, not after 6 scenes worth of content compressed into 4."
+    )
+
+    user_message = f"{length_requirement}\n\n{vision_text}"
     recent = read_recent_transcripts(5)
     if recent:
         user_message += (
