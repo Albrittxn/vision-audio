@@ -411,7 +411,7 @@ def generate_narrative(vision_text, narrative_date, day_spec, spice):
     formatted_date = format_narrative_date(narrative_date)
 
     system_prompt = (
-        "You write 1500-word first-person POV narratives for Ryan, age 18, "
+        "You write 2500-word first-person POV narratives for Ryan, age 18, "
         "founder of Entheios AI in Las Vegas. The narrative is set once his "
         "vision is fully achieved. Present tense throughout. Heavy sensory "
         "detail (smells, textures, light, sound). Internal monologue interleaved "
@@ -467,7 +467,7 @@ def generate_narrative(vision_text, narrative_date, day_spec, spice):
         config=types.GenerateContentConfig(
             system_instruction=system_prompt,
             temperature=1.0,
-            max_output_tokens=8000,
+            max_output_tokens=12000,
             thinking_config=types.ThinkingConfig(thinking_budget=0),
         ),
     )
