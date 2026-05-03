@@ -9,6 +9,7 @@ from datetime import date, datetime, timedelta, timezone
 from email.message import EmailMessage
 from email.utils import format_datetime
 from pathlib import Path
+from urllib.parse import quote
 from xml.sax.saxutils import escape
 from zoneinfo import ZoneInfo
 
@@ -24,6 +25,8 @@ DRAFT_PATH = REPO_ROOT / "scripts" / "last_draft.txt"
 TRANSCRIPTS_DIR = REPO_ROOT / "transcripts"
 
 LOCAL_TZ = ZoneInfo("America/Los_Angeles")
+
+BASE_URL = "https://albrittxn.github.io/vision-audio"
 
 NARRATIVE_DATE_START = date(2026, 12, 1)
 NARRATIVE_DATE_END = date(2027, 5, 31)
@@ -532,7 +535,7 @@ def build_rss():
         pub_date = format_datetime(mtime_dt)
 
         size = p.stat().st_size
-        url = f"__BASE_URL__/audio/{p.name}"
+        url = f"{BASE_URL}/audio/{quote(p.name)}"
         guid = url
         title = f"Vision — {date_str}"
 
@@ -556,14 +559,14 @@ def build_rss():
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Ryan's Daily Vision</title>
-    <link>__BASE_URL__</link>
+    <link>{BASE_URL}</link>
     <language>en-us</language>
     <description>Daily first-person vision narratives.</description>
     <itunes:author>Ryan</itunes:author>
     <itunes:summary>Daily first-person vision narratives.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:category text="Education"/>
-    <itunes:image href="__BASE_URL__/cover.jpg"/>
+    <itunes:image href="{BASE_URL}/cover.jpg"/>
     <lastBuildDate>{now_rfc822}</lastBuildDate>
 {items_xml}
   </channel>
@@ -609,6 +612,10 @@ def main():
 
 
 if __name__ == "__main__":
+    if "--rebuild-rss-only" in sys.argv[1:]:
+        build_rss()
+        print(f"RSS rebuilt at {RSS_PATH.relative_to(REPO_ROOT)}")
+        sys.exit(0)
     try:
         main()
     except Exception:
