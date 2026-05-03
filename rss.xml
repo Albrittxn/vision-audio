@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ryan's Daily Vision</title>
+    <link>__BASE_URL__</link>
+    <language>en-us</language>
+    <description>Daily first-person vision narratives.</description>
+    <itunes:author>Ryan</itunes:author>
+    <itunes:summary>Daily first-person vision narratives.</itunes:summary>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:category text="Education"/>
+    <itunes:image href="__BASE_URL__/cover.jpg"/>
+    <lastBuildDate>Sun, 03 May 2026 03:49:47 +0000</lastBuildDate>
+    <item>
+      <title>Vision — 2027-03-13</title>
+      <description>Vision — 2027-03-13</description>
+      <pubDate>Sun, 03 May 2026 03:49:47 +0000</pubDate>
+      <guid isPermaLink="false">__BASE_URL__/audio/2027-03-13.mp3</guid>
+      <enclosure url="__BASE_URL__/audio/2027-03-13.mp3" length="4501296" type="audio/mpeg"/>
+      <itunes:author>Ryan</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Vision — 2026-05-03</title>
+      <description>Vision — 2026-05-03</description>
+      <pubDate>Sun, 03 May 2026 03:31:57 +0000</pubDate>
+      <guid isPermaLink="false">__BASE_URL__/audio/2026-05-03.mp3</guid>
+      <enclosure url="__BASE_URL__/audio/2026-05-03.mp3" length="840384" type="audio/mpeg"/>
+      <itunes:author>Ryan</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+  </channel>
+</rss>

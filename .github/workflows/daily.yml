@@ -1,0 +1,72 @@
+name: Daily Vision Audio
+
+on:
+  schedule:
+    # 5:55 AM Pacific year-round. Both crons fire daily; the DST guard step
+    # below short-circuits the wrong one based on current Pacific offset.
+    - cron: "55 12 * * *"  # 12:55 UTC = 5:55 AM PDT (UTC-7, ~Mar–Nov)
+    - cron: "55 13 * * *"  # 13:55 UTC = 5:55 AM PST (UTC-8, ~Nov–Mar)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: DST guard — proceed only if it's 5:xx AM Pacific
+        id: dst
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 - <<'PY'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          if os.environ.get("EVENT_NAME") == "schedule":
+              now = datetime.now(ZoneInfo("America/Los_Angeles"))
+              skip = now.hour != 5
+              print(f"Scheduled run — Pacific time {now.strftime('%H:%M')} — skip={skip}")
+          else:
+              skip = False
+              print("Manual / dispatched run — proceeding")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"skip={'true' if skip else 'false'}\n")
+          PY
+
+      - name: Install dependencies
+        if: steps.dst.outputs.skip != 'true'
+        run: pip install -r requirements.txt
+
+      - name: Generate audio
+        if: steps.dst.outputs.skip != 'true'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+        run: python scripts/generate.py
+
+      - name: Commit and push
+        if: steps.dst.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audio/ rss.xml transcripts/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Daily vision audio $(date -u +%Y-%m-%d)"
+            git push
+          fi
