@@ -12,7 +12,15 @@
     <itunes:explicit>false</itunes:explicit>
     <itunes:category text="Education"/>
     <itunes:image href="https://albrittxn.github.io/vision-audio/cover.jpg"/>
-    <lastBuildDate>Sun, 03 May 2026 07:46:29 +0000</lastBuildDate>
-
+    <lastBuildDate>Sun, 03 May 2026 07:53:18 +0000</lastBuildDate>
+    <item>
+      <title>Vision — Vision 1 - 05.03</title>
+      <description>Vision — Vision 1 - 05.03</description>
+      <pubDate>Sun, 03 May 2026 07:53:18 +0000</pubDate>
+      <guid isPermaLink="false">https://albrittxn.github.io/vision-audio/audio/Vision%201%20-%2005.03.mp3</guid>
+      <enclosure url="https://albrittxn.github.io/vision-audio/audio/Vision%201%20-%2005.03.mp3" length="4077216" type="audio/mpeg"/>
+      <itunes:author>Ryan</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
   </channel>
 </rss>
